@@ -7,13 +7,13 @@ import { BiWorld, BiTimeFive } from "react-icons/bi"
 
 function JobInfoPage() {
   let { state } = useLocation();
-  console.log(state);
+  //console.log(state);
   var dateTimeExp = new Date(state.page.job_offer_expiration_timestamp    * 1000);  
   var dateTimePosted = new Date(state.page.job_posted_at_timestamp * 1000);
   var des = state.page.job_description
   des = des.replaceAll("\n\n", '<br/>')
   des = des.replaceAll("•","-")
-  let vals = Object.values(state.page.job_highlights)
+  //let vals = Object.values(state.page.job_highlights)
   let keys = Object.keys(state.page.job_highlights)
 
   return (
@@ -22,7 +22,7 @@ function JobInfoPage() {
         <b>Github</b> Jobs
       </div>
       <main className="flex flex-wrap md:flex-nowrap">
-        <aside className="px-4 mb-4 md:px-8 w-full h-fit md:max-w-xs sticky top-24 bg-background ">
+        <aside className="px-4 mb-4 md:px-8 w-full h-fit md:max-w-xs bg-background ">
             <Link to="/" state={{pagination : state.pagination}} className="flex items-center gap-4 mb-4">
                 <HiOutlineArrowNarrowLeft className="text-primary text-base inline" /> 
                 <span className="text-primary text-base"> Back to search </span>
@@ -47,9 +47,9 @@ function JobInfoPage() {
             </div>
         </aside>
         <section className="w-full md:w-3/4 px-4 md:px-8">
-            <div className=" flex flex-col justify-center gap-2  sm:flex-row sm:justify-start sm:gap-4 mb-2">
+            <div className=" flex flex-col justify-start items-start gap-2  sm:flex-row sm:items-center sm:gap-4 mb-2">
                 <h1 className="text-2xl  font-bold ">{state.page.job_title}</h1>
-                <div className="border-2 text-xs rounded px-2 py-1  truncate border-secondary max-w-fit h-8">
+                <div className="border-2 text-xs rounded px-2 py-1  truncate border-secondary max-w-fit ">
                     {state.page.job_employment_type}
                 </div> 
             </div>
