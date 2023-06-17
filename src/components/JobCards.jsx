@@ -5,13 +5,13 @@ import ReactPaginate from "react-paginate";
 import JobCard from "./JobCard";
 
 function JobCards(props) {
-  const items = props.apiData.data;
+  const items = props.apiData;
   const itemsPerPage = 4;
 
   const [itemOffset, setItemOffset] = useState(props.pagination);
   const endOffset = itemOffset + itemsPerPage;
 
-  const currentItems = items.data.slice(itemOffset, endOffset);
+  const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
   const handlePageClick = (event) => {

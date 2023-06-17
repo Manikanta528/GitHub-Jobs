@@ -31,24 +31,25 @@ function MainPage() {
     event.preventDefault();
     setActualQuery(query);
     setActualLocation(location);
-    useEffect(()=>{
-      const options = {
-        method: 'GET',
-        url: 'https://jsearch.p.rapidapi.com/search',
-        params: {
-          query: que +" in "+ loc ,
-          page: '1',
-          num_pages: '15',
-          employment_types : fullTime ? "FULLTIME" : "PARTTIME",
-        },
-        headers: {
-          'X-RapidAPI-Key': '71b69fb31bmsh7d13a809fa7e7ecp16c1fcjsn21afd2c7dd25',
-          'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-        }
-      };
-      axios.request(options).then((res)=>setApiData(res));
-      setApiData(apiData)
-    },[])
+    const options = {
+      method: 'GET',
+      url: 'https://jsearch.p.rapidapi.com/search',
+      params: {
+        query: que +" in "+ loc ,
+        page: '1',
+        num_pages: '15',
+        employment_types : fullTime ? "FULLTIME" : "PARTTIME",
+      },
+      headers: {
+        'X-RapidAPI-Key': '71b69fb31bmsh7d13a809fa7e7ecp16c1fcjsn21afd2c7dd25',
+        'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+      }
+    };
+    axios.request(options).then((res)=>{
+      console.log(res);
+      setApiData(res.data.data)
+    });
+    //setApiData(apiData)
   }
   const handleFullTime = () => {
     setFullTime((prev) => !prev);
@@ -72,7 +73,7 @@ function MainPage() {
         'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
       }
     };
-    axios.request(options).then((res)=>setApiData(res)).catch(err=>setError(err));
+    axios.request(options).then((res)=>setApiData(res.data.data)).catch(err=>setError(err));
     //console.log(apiData)
   },[])
 
