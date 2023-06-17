@@ -11,7 +11,7 @@ function JobCards(props) {
   const [itemOffset, setItemOffset] = useState(props.pagination);
   const endOffset = itemOffset + itemsPerPage;
 
-  const currentItems = items.slice(itemOffset, endOffset);
+  const currentItems = items.data.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
   const handlePageClick = (event) => {

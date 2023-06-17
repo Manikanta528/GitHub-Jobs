@@ -24,7 +24,7 @@ function MainPage() {
   let que = actualQuery == "" ? "Full Stack Developer" : actualQuery;
   let loc = actualLocation == "" ? "India" : actualLocation;
 
-  const [apiData, setApiData] = useState(demo);
+  const [apiData, setApiData] = useState();
   
   const [error , setError] = useState(null)
   const HandleSubmit = (event) => {
